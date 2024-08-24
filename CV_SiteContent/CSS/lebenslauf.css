@@ -28,48 +28,28 @@
     line-height: 175%;
 }
 
+.table-container {
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     background: var(--primary-color);
-    padding: auto;
-}
-table td {
-    border: 1px solid var(--secondary-color);
-}
-table tr:first-child th {
-    border-top: 0;
-}
-table tr:last-child td {
-    border-bottom: 0;
-}
-table tr td:first-child,
-table tr th:first-child {
-    border-left: 0;
-}
-table tr td:last-child,
-table tr th:last-child {
-    border-right: 0;
 }
 
-caption,
-th, 
-td {
+table th, table td {
     padding: 0.5rem;
-}
-
-caption, 
-th {
     text-align: left;
 }
 
-th {
+table th {
     background: var(--main-brand-color);
 }
 
-/*tr:nth-of-type(2n) {
-    background: var(--light-secondary-color);
-} */
+table td {
+    border: 1px solid var(--secondary-color);
+}
 
 @media(max-width: 800px){
     #lebenslauf_section{
@@ -87,28 +67,39 @@ th {
         color: var(--main-brand-color)
     }
 
+    .table-container {
+        overflow-x: auto;
+        margin-bottom: 1rem;
+    }
+
+    table {
+        width: 100%;
+    }
+
     th{
         display: none;
     }
 
     td {
-        display: grid;
-        grid-template-columns: 15ch auto;
-        gap: 0.5rem;
+        display: flex;
+        justify-content: space-between;
         padding: 0.5rem 1rem;
-    }
-
-    td:first-child {
-        padding-top: 1rem;
-    }
-
-    td:last-child {
-        padding-bottom: 1rem;
+        border: none;
+        border-bottom: 1px solid var(--secondary-color);
     }
 
     td::before {
         content: attr(data-label) ": ";
-        font-weight: 700;
-        text-transform: capitalize;
+        font-weight: bold;
+        flex-basis: 35%;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 0.75rem;
     }
 }
