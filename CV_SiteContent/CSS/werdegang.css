@@ -1,4 +1,88 @@
-#werdegang_section{
-    padding: 70px;
-    background-color: var(--primary-color);    
+#werdegang_section {
+    padding: 100px 0;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    flex-wrap: wrap-reverse;
+}
+
+.werdegang_container {
+    width: 750px;
+    max-width: 90%;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--primary-color);
+}
+
+table th, table td {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+table th {
+    background: var(--main-brand-color);
+}
+
+table td {
+    border: 1px solid var(--secondary-color);
+}
+
+@media(max-width: 800px) {
+    #werdegang_section {
+        padding: 50px 0;
+    }
+
+    #werdegang_section h2 {
+        text-align: center;
+        font-size: 11vw;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        margin-bottom: 1rem;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-bottom: 1px solid var(--secondary-color);
+    }
+
+    td::before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        flex-basis: 35%;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 0.75rem;
+    }
+
+    ul {
+        padding-left: 1rem;
+    }
 }
