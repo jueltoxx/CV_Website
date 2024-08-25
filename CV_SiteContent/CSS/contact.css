@@ -1,0 +1,86 @@
+#section_contact {
+    padding: 50px 20px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.contact_container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Drei Spalten: eine für die Infos, eine für die Karte, eine für das Formular */
+    gap: 20px;
+}
+
+.contact_info, .contact_map, .contact_form {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact_info h3, .contact_map h3, .contact_form h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--main-brand-color);
+}
+
+.contact_info p, .contact_map p, .contact_form p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--primary-text-color);
+}
+
+.contact_info a, .contact_map a, .contact_form a {
+    color: var(--main-brand-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact_info a:hover, .contact_map a:hover, .contact_form a:hover {
+    color: var(--secondary-color);
+}
+
+.contact_form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact_form input, .contact_form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact_form button {
+    padding: 10px 20px;
+    background-color: var(--main-brand-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact_form button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .contact_container {
+        grid-template-columns: 1fr; /* Wechselt zu einer Spalte auf kleineren Bildschirmen */
+    }
+
+    .contact_info, .contact_map, .contact_form {
+        margin-bottom: 20px;
+    }
+}
