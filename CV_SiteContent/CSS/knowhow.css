@@ -24,23 +24,31 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card h3 {
     font-size: 20px;
     margin-bottom: 15px;
     color: var(--main-brand-color);
+    text-align: center;
+    width: 100%;
 }
 
 .card img {
     width: 100px;
     height: auto;
     margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card a {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: auto;
     padding: 10px 20px;
     background-color: var(--main-brand-color);
     color: white;
@@ -57,7 +65,14 @@
     position: relative;
     width: 100%;
     max-width: 200px;
+    height: 200px; /* Festgelegte Höhe, um ein Quadrat zu erzwingen */
     margin: 0 auto;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50%; /* Stellt sicher, dass das Canvas rund bleibt */
 }
 
 .percentage {
@@ -70,7 +85,7 @@
 }
 
 /* Responsive Design */
-@media(max-width: 800px) {
+@media(max-width: 900px) {
     .card {
         padding: 15px;
     }
@@ -85,6 +100,7 @@
 
     .chart-container {
         max-width: 150px;
+        height: 150px; /* Stellt sicher, dass die Kreise auch auf mobilen Geräten rund bleiben */
     }
 
     .percentage {
