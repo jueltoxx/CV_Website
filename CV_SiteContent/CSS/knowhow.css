@@ -61,27 +61,28 @@
     background-color: var(--secondary-color);
 }
 
-.chart-container {
-    position: relative;
-    width: 100%;
-    max-width: 200px;
-    height: 200px; /* Festgelegte Höhe, um ein Quadrat zu erzwingen */
-    margin: 0 auto;
+.rating-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
 }
 
-.chart-container canvas {
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 50%; /* Stellt sicher, dass das Canvas rund bleibt */
+.star {
+    font-size: 30px;
+    color: #e6e6e6; /* Unausgefüllte Farbe */
+    transition: color 0.3s;
 }
 
-.percentage {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    color: var(--main-brand-color);
+.star.filled {
+    color: #FFD700; /* Gefüllte Farbe (Gold) */
+}
+
+/* Neuer Abschnitt für die Beschreibung */
+.description {
+    margin-top: 15px;
+    font-size: 16px;
+    color: var(--text-color);
+    text-align: center;
 }
 
 /* Responsive Design */
@@ -98,12 +99,11 @@
         width: 80px;
     }
 
-    .chart-container {
-        max-width: 150px;
-        height: 150px; /* Stellt sicher, dass die Kreise auch auf mobilen Geräten rund bleiben */
+    .star {
+        font-size: 24px;
     }
 
-    .percentage {
-        font-size: 20px;
+    .description {
+        font-size: 14px; /* Kleinere Schriftgröße für Mobilgeräte */
     }
 }
