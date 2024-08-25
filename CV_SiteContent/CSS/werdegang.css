@@ -1,4 +1,74 @@
-#werdegang_section{
-    padding: 70px;
-    background-color: var(--primary-color);    
+#werdegang_section {
+    padding: 50px 20px;
+    background-color: var(--secondary-color);
+}
+
+#werdegang_section h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--main-brand-color);
+}
+
+.werdegang_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.werdegang_container div {
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.werdegang_container h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--main-brand-color);
+}
+
+.werdegang_container p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.werdegang_container ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.werdegang_container ul li {
+    font-size: 16px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+/* Responsive Design */
+@media(max-width: 800px) {
+    .werdegang_container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #werdegang_section h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .werdegang_container h4 {
+        font-size: 20px;
+    }
+
+    .werdegang_container p {
+        font-size: 16px;
+    }
+
+    .werdegang_container ul li {
+        font-size: 14px;
+    }
 }
