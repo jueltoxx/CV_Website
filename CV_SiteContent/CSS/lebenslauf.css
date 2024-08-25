@@ -1,114 +1,92 @@
-#lebenslauf_section{
-    padding: 100px 0;
-    background-color: var(--primary-color);
+#lebenslauf_section {
+    padding: 50px 20px;
+    background-color: var(--primary-color); /* Hintergrund der gesamten Sektion auf secondary-color geändert */
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 100px;
     flex-wrap: wrap-reverse;
+    gap: 50px;
 }
 
 .lebenslauf_container {
-    width: 750px;
-    max-width: 90%;
-}
-
-#lebenslauf_section img{
-    width: 400px;
-    max-width: calc(90% - 30px);
-    border: 15px solid var(--primary-color);
-}
-
-.lebenslauf_container h2{
-    font-size: 80px;
-}
-
-.lebenslauf_container p{
-    text-align: justify;
-    line-height: 175%;
-}
-
-table {
+    max-width: 750px;
     width: 100%;
-    border-collapse: collapse;
-    background: var(--primary-color);
-    padding: auto;
-}
-table td {
-    border: 1px solid var(--secondary-color);
-}
-table tr:first-child th {
-    border-top: 0;
-}
-table tr:last-child td {
-    border-bottom: 0;
-}
-table tr td:first-child,
-table tr th:first-child {
-    border-left: 0;
-}
-table tr td:last-child,
-table tr th:last-child {
-    border-right: 0;
+    background-color: var(--primary-color); /* Hintergrund der Boxen auf primary-color geändert */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-caption,
-th, 
-td {
-    padding: 0.5rem;
+#lebenslauf_section img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 15px solid var(--primary-color); /* Rand der Bilder bleibt primary-color */
+    object-fit: cover;
 }
 
-caption, 
-th {
-    text-align: left;
+.lebenslauf_container h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--main-brand-color);
 }
 
-th {
-    background: var(--main-brand-color);
+.education_block {
+    margin-bottom: 30px;
 }
 
-/*tr:nth-of-type(2n) {
-    background: var(--light-secondary-color);
-} */
+.education_block h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
 
-@media(max-width: 800px){
-    #lebenslauf_section{
-        padding: 50px 0;
+.language_item,
+.education_item {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: var(--secondary-color); /* Hintergrund der inneren Boxen auf secondary-color geändert */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.language_item p,
+.education_item p {
+    margin: 0;
+    color: var(--primary-text-color); /* Textfarbe auf primary-text-color gesetzt */
+}
+
+.language_item p strong,
+.education_item p strong {
+    color: var(--text-color);
+}
+
+.period {
+    font-weight: bold;
+    color: var(--main-brand-color);
+}
+
+.details {
+    margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .lebenslauf_container {
+        padding: 20px;
     }
 
-    #lebenslauf_section h2 {
-        text-align: center;
-        font-size: 11vw;
+    .lebenslauf_container h2 {
+        font-size: 28px;
     }
 
-    #lebenslauf_section h3 {
-        text-align: center;
-        font-size: 5vw;
-        color: var(--main-brand-color)
+    .education_block h3 {
+        font-size: 20px;
     }
 
-    th{
-        display: none;
-    }
-
-    td {
-        display: grid;
-        grid-template-columns: 15ch auto;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-    }
-
-    td:first-child {
-        padding-top: 1rem;
-    }
-
-    td:last-child {
-        padding-bottom: 1rem;
-    }
-
-    td::before {
-        content: attr(data-label) ": ";
-        font-weight: 700;
-        text-transform: capitalize;
+    .education_item p,
+    .language_item p {
+        font-size: 16px;
     }
 }
