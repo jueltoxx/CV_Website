@@ -32,3 +32,46 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(card);
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("contactForm");
+    const popup = document.getElementById("popup");
+    const popupMessage = document.getElementById("popupMessage");
+    const closePopupButton = document.getElementById("closePopup");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const subject = formData.get("subject");
+        const message = formData.get("message");
+
+        fetch("/send-email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ subject, message })
+        })
+        .then(response => {
+            if (response.ok) {
+                showPopup("E-Mail erfolgreich gesendet!");
+            } else {
+                showPopup("Fehler beim Senden der E-Mail");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            showPopup("Fehler beim Senden der E-Mail");
+        });
+    });
+
+    closePopupButton.addEventListener("click", function() {
+        popup.style.display = "none";
+    });
+
+    function showPopup(message) {
+        popupMessage.textContent = message;
+        popup.style.display = "block";
+    }
+});
