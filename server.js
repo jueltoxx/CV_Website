@@ -1,5 +1,4 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
 const path = require('path'); // Benötigt für den Umgang mit Dateipfaden
 
 const app = express();
