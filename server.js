@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Azure Communication Services Verbindungszeichenfolge
-const connectionString = "your-azure-communication-services-connection-string";
+const connectionString = "endpoint=https://pict-commsvc1-csn.switzerland.communication.azure.com/;accesskey=80Rkf6YqvN37NlxPiSV7PWYigg6ERbi3oHXDvZelRRuADJIqdM6nJQQJ99AHACULyCpw1ebAAAAAAZCSP7Ww";
 const emailClient = new EmailClientBuilder().connectionString(connectionString).buildClient();
 
 // Middleware
@@ -23,7 +23,7 @@ app.post('/send-email', async (req, res) => {
     try {
         const toAddress = new EmailAddress("buehler.joel@gmail.com");
         const emailMessage = new EmailMessage()
-            .setSenderAddress("DoNotReply@yourdomain.com")  // Verwende hier deine Domain
+            .setSenderAddress("DoNotReply@buehler.work")  // Verwende hier deine Domain
             .setToRecipients(toAddress)
             .setSubject(subject)
             .setBodyPlainText(message);
