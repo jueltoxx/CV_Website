@@ -86,7 +86,7 @@
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    flex-shrink: 0; /* Verhindert, dass der Button schrumpft */
+    flex-shrink: 0; /* Verhindert, dass der Button schrumpft test deployment render*/ 
     max-width: 100%; /* Stellt sicher, dass der Button die Box nicht überragt */
     box-sizing: border-box; /* Bezieht Padding in die Breite ein */
     align-self: flex-start; /* Stellt sicher, dass der Button auf der Höhe des Texts linksbündig bleibt */
