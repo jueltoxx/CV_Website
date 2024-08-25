@@ -1,35 +1,45 @@
 const express = require('express');
 const path = require('path');
-const { EmailClient, EmailClientBuilder, EmailMessage, EmailAddress } = require('@azure/communication-email');
+const { EmailClient } = require("@azure/communication-email");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
-// Azure Communication Services Verbindungszeichenfolge
+// Azure Communication Services Connection String
 const connectionString = "endpoint=https://pict-commsvc1-csn.switzerland.communication.azure.com/;accesskey=80Rkf6YqvN37NlxPiSV7PWYigg6ERbi3oHXDvZelRRuADJIqdM6nJQQJ99AHACULyCpw1ebAAAAAAZCSP7Ww";
-const emailClient = new EmailClientBuilder().connectionString(connectionString).buildClient();
+const client = new EmailClient(connectionString);
 
-// Middleware
-app.use(express.json());  // Für das Parsen von JSON-Daten
-app.use(express.urlencoded({ extended: true }));  // Für das Parsen von URL-kodierten Daten
+// Middleware, um JSON-Daten und URL-kodierte Daten zu verarbeiten
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (HTML, CSS, JS)
+// Middleware, um statische Dateien zu bedienen
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Standardroute für index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Route für das Kontaktformular
 app.post('/send-email', async (req, res) => {
     const { subject, message } = req.body;
+    console.log(req.body);  // Protokolliert den Inhalt von req.body
 
     try {
-        const toAddress = new EmailAddress("buehler.joel@gmail.com");
-        const emailMessage = new EmailMessage()
-            .setSenderAddress("DoNotReply@buehler.work")  // Verwende hier deine Domain
-            .setToRecipients(toAddress)
-            .setSubject(subject)
-            .setBodyPlainText(message);
+        const emailMessage = {
+            senderAddress: "DoNotReply@buehler.work", // Deine Domain für den Absender
+            content: {
+                subject: subject,
+                plainText: message,
+            },
+            recipients: {
+                to: [{ address: "buehler.joel@gmail.com" }], // Empfänger-E-Mail-Adresse
+            },
+        };
 
-        const poller = emailClient.beginSend(emailMessage, null);
-        const result = await poller.waitForCompletion();
+        const poller = await client.beginSend(emailMessage);
+        const result = await poller.pollUntilDone();
 
         if (result.error) {
             throw new Error(result.error.message);
@@ -39,11 +49,11 @@ app.post('/send-email', async (req, res) => {
         }
     } catch (error) {
         console.error("Fehler beim Senden der E-Mail:", error);
-        res.status(500).send('Fehler beim Senden der E-Mail');
+        res.status(500).send(`Fehler beim Senden der E-Mail: ${error.message}`);
     }
 });
 
-// Start des Servers
+// Server starten
 app.listen(PORT, () => {
     console.log(`Server läuft auf Port ${PORT}`);
 });
