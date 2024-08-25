@@ -11,9 +11,8 @@
     max-width: 1200px;
     width: 100%;
     background-color: var(--primary-color);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0px;
+    border-radius: 0px;
 }
 
 .lebenslauf_container h2 {
@@ -32,8 +31,6 @@
 .education_block {
     padding: 20px;
     background-color: var(--primary-color);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .education_block h3 {
