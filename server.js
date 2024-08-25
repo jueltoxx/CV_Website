@@ -14,33 +14,30 @@ app.get('/', (req, res) => {
 });
 
 // Beispiel für E-Mail-Versand (kann auf deine Bedürfnisse angepasst werden)
-app.post('/send-email', (req, res) => {
+app.post('/send-email', async (req, res) => {
     const { subject, message } = req.body;
 
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'your-email@gmail.com',
-            pass: 'your-email-password'
-        }
-    });
+    try {
+        const toAddress = new EmailAddress("buehler.joel@gmail.com");
+        const emailMessage = new EmailMessage()
+            .setSenderAddress("DoNotReply@buehler.work")  // Verwende hier deine Domain
+            .setToRecipients(toAddress)
+            .setSubject(subject)
+            .setBodyPlainText(message);
 
-    let mailOptions = {
-        from: 'your-email@gmail.com',
-        to: 'buehler.joel@gmail.com',
-        subject: subject,
-        text: message
-    };
+        const poller = emailClient.beginSend(emailMessage, null);
+        const result = await poller.waitForCompletion();
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            return res.status(500).send('Fehler beim Senden der E-Mail');
+        if (result.error) {
+            throw new Error(result.error.message);
         } else {
-            console.log('E-Mail gesendet: ' + info.response);
-            return res.status(200).send('E-Mail erfolgreich gesendet');
+            console.log("E-Mail erfolgreich gesendet:", result);
+            res.status(200).send('E-Mail erfolgreich gesendet');
         }
-    });
+    } catch (error) {
+        console.error("Fehler beim Senden der E-Mail:", error);
+        res.status(500).send('Fehler beim Senden der E-Mail');
+    }
 });
 
 // Server starten
