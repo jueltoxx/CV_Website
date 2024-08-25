@@ -82,12 +82,17 @@ label[for="toggle_button"] span {
         top: 0;
         left: 0;
         background: var(--secondary-color);
-        padding: 15px;
-        border-radius: 0 0 25px 0;
+        padding: 10px; /* Weniger Padding für eine kompaktere Darstellung */
+        border-radius: 0 0 15px 0; /* Kleinere Eckenrundung */
     }
     nav ul {
         display: none;
         flex-direction: column;
+        gap: 10px; /* Weniger Abstand zwischen den Menüpunkten */
+    }
+    nav a {
+        font-size: 16px; /* Kleinere Schriftgröße für die Menülinks */
+        padding: 5px; /* Weniger Padding für eine kompaktere Darstellung */
     }
 
     #toggle_button:checked ~ ul {
@@ -96,5 +101,15 @@ label[for="toggle_button"] span {
 
     label[for="toggle_button"] {
         display: block;
+        margin-bottom: 10px; /* Weniger Abstand zum oberen Rand */
+    }
+
+    label[for="toggle_button"] span {
+        font-size: 30px; /* Kleinere Schriftgröße für das Menü-Icon */
+    }
+
+    .circle {
+        height: 300px; /* Kleinere Höhe für den Kreis in der mobilen Ansicht */
+        width: 300px; /* Kleinere Breite für den Kreis in der mobilen Ansicht */
     }
 }
