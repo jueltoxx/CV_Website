@@ -76,13 +76,13 @@ label[for="toggle_button"] span {
     font-size: 50px;
 }
 
-@media(max-width: 800px) {
+@media(max-width: 900px) {
     nav {
         position: absolute;
         top: 0;
         left: 0;
         background: var(--secondary-color);
-        padding: 10px; /* Weniger Padding für eine kompaktere Darstellung */
+        padding: 4px; /* Weniger Padding für eine kompaktere Darstellung */
         border-radius: 0 0 15px 0; /* Kleinere Eckenrundung */
     }
     nav ul {
@@ -92,7 +92,7 @@ label[for="toggle_button"] span {
     }
     nav a {
         font-size: 16px; /* Kleinere Schriftgröße für die Menülinks */
-        padding: 5px; /* Weniger Padding für eine kompaktere Darstellung */
+        padding: 4px; /* Weniger Padding für eine kompaktere Darstellung */
     }
 
     #toggle_button:checked ~ ul {
